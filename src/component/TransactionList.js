@@ -1,12 +1,12 @@
 import TransactionCard from "./TransactionCard";
 
-function TransactionList() {
+function TransactionList(props) {
+    const {transactions, deleteTransaction, selectTransaction} = props;
+    console.log(transactions);
     return(
         <ul className="list-group">
             {/* ข้อมูลที่ transaction ส่งไปจะเอามาจาก backend อีกที */}
-            <TransactionCard transaction={{ id, payee, category }}/>
-            <TransactionCard/>
-            <TransactionCard/>
+            {transactions.map(item => <TransactionCard key={item.id} item={item} deleteTransaction={deleteTransaction} selectTransaction={selectTransaction}/>)}
         </ul>
     )
 }
